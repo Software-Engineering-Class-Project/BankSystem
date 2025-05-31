@@ -1,0 +1,30 @@
+package Bank;
+
+import Data.FileIO;
+
+public class RemoveAccount {
+
+    public static boolean removeAccount(String accNumToRemove) {
+        FileIO.Read(); // data dosyasından Bank objesini oku
+        BankAccount[] accounts = FileIO.bank.getAccounts();
+        boolean removed = false;
+
+        for (int i = 0; i < accounts.length; i++) {
+            if (accounts[i] != null && accounts[i].getAccNum().equals(accNumToRemove)) {
+                accounts[i] = null; // Diziden sil
+                removed = true;
+                break;
+            }
+        }
+
+        if (removed) {
+            FileIO.bank.setAccounts(accounts); // diziyi geri ata
+            FileIO.Write(); // data dosyasına yaz
+            System.out.println("Account " + accNumToRemove + " removed successfully.");
+        } else {
+            System.out.println("Account " + accNumToRemove + " not found.");
+        }
+
+        return removed;
+    }
+}

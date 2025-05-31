@@ -7,6 +7,7 @@ import java.net.URI;
 import java.net.URL;
 import org.json.JSONObject;
 
+// A class that tracks and converts currency rates up to date
 public class ExchangeRate {
 
     public static double getUSDExchangeRate() {
